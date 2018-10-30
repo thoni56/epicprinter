@@ -3,7 +3,8 @@
 declare module 'meteor/aldeed:autoform' {
 
     export namespace AutoForm {
-        function getFieldValue(fieldName:string, formId?:string);
+        function getFieldValue(fieldName:string, formId?:string) : any;
+        function validateField(formId:string) : boolean;
     }
 
 }
