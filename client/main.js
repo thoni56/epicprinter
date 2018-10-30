@@ -16,12 +16,12 @@ Template.body.events({
         event.preventDefault();
 
         const effort = event.target.effort.value;
+        const key = event.target.key.value;
+        const title = event.target.title.value;
+
         let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
         const [r, g, b] = randomRGB();
 
-        doc.setFillColor(r, g, b);
-        doc.setDrawColor(0.5);
-        doc.setLineWidth(0.3);
         const marginX = 10;
         const marginY = 10;
         const unit = 30;
@@ -37,6 +37,7 @@ Template.body.events({
         let x = marginX;
         let y = marginY;
 
+        doc.setFillColor(r, g, b);
         while (length > maxLength) {
             doc.rect(x, y, maxLength, height, 'F');
             doc.line(x, y+height, x+maxLength, y+height);
@@ -44,6 +45,7 @@ Template.body.events({
             y += unit;
         }
         doc.rect(x, y, length, height, 'F');
+        doc.text([key, title], marginX+5, marginY+13);
         doc.save('epic.pdf');
     }
 });

@@ -11,8 +11,9 @@ so to increase "height" you have to cut the epic (paper representation) in parts
 and paste them along side each other. This also allows for more dynamic
 variation in "height".
 
-☐ Dialog for entering epic printing data (key, title, effort)
-☐ Create a PDF to print
+✔ Dialog for entering epic printing data (key, title, effort) @done(18-10-30 16:14)
+✔ Create a PDF to print @done(18-10-30 16:15)
+☐ Handle epics which require multiple pages
 ☐ User accounts
 ☐ Save epics and make a list
 ☐ Re-print stored epic
