@@ -29,3 +29,5 @@ peppelg:bootstrap-3-modal
 twbs:bootstrap
 meteortesting:mocha
 barbatus:typescript
+accounts-ui
+accounts-password
