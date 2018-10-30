@@ -2,7 +2,7 @@ import { jsPDF } from 'jspdf';
 
 
 export function printEpicToPdf(key: string, title: string, effort: number) {
-    let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
+    let doc:jsPDF = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
     const [r, g, b] = randomRGB();
     const marginX = 10;
     const marginY = 10;
