@@ -15,6 +15,7 @@
     "chai": "^4.2.0",
     "chart.js": "^2.7.2",
     "jquery": "^3.3.1",
+    "jspdf": "^1.4.1",
     "meteor-node-stubs": "^0.4.1",
     "popper.js": "^1.14.4",
     "simpl-schema": "^1.4.3"
