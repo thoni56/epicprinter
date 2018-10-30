@@ -6,25 +6,44 @@ import './main.css';
 import './main.html';
 
 Template.body.helpers({
-    epics: function() {
+    epics: function () {
         return Epics;
     }
 })
 
 Template.body.events({
     'submit #print': function (event) {
+        event.preventDefault();
+
         const effort = event.target.effort.value;
-        let doc = new jsPDF({ orientation: 'landscape', units: 'mm' });
+        let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
         const [r, g, b] = randomRGB();
 
         doc.setFillColor(r, g, b);
-        const offsetX = 10;
-        const offsetY = 10;
-        const startX = offsetX + 0;
-        const startY = offsetY + 0;
-        const length = effort;
-        const height = 50;
-        doc.rect(startX, startY, length, height, 'F');
+        doc.setDrawColor(0.5);
+        doc.setLineWidth(0.3);
+        const marginX = 10;
+        const marginY = 10;
+        const unit = 30;
+
+        const paperWidth = 297;
+        const paperHeight = 210;
+
+        const maxLength = paperWidth - 2 * marginX;
+        const maxCount = Math.floor((paperHeight - 2 * marginY) / unit);
+
+        let length = effort;
+        let height = unit;
+        let x = marginX;
+        let y = marginY;
+
+        while (length > maxLength) {
+            doc.rect(x, y, maxLength, height, 'F');
+            doc.line(x, y+height, x+maxLength, y+height);
+            length -= maxLength;
+            y += unit;
+        }
+        doc.rect(x, y, length, height, 'F');
         doc.save('epic.pdf');
     }
 });
