@@ -3,7 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './epicItem.html';
 
-const activeEpic = new ReactiveVar(undefined);
+export const activeEpic = new ReactiveVar(undefined);
 
 Template.epicItem.helpers({
     active() {

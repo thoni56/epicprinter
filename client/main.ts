@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { Epics } from '../imports/api/epics';
 import { printEpicToPdf } from './printer';
 import { AutoForm } from 'meteor/aldeed:autoform';
+import { activeEpic } from 'imports/ui/epicList/epicItem';
 
 import '../imports/ui/epicList/epicList';
 
@@ -9,8 +10,11 @@ import './main.css';
 import './main.html';
 
 Template.body.helpers({
-    epics: function () {
+    epics() {
         return Epics;
+    },
+    epicToShow() {
+        return Epics.findOne(activeEpic.get());
     }
 })
 
