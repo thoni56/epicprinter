@@ -12,15 +12,17 @@ Template.body.helpers({
 })
 
 Template.body.events({
-    'clicka #print': function (event) {
+    'submit #print': function (event) {
+        const effort = event.target.effort.value;
         let doc = new jsPDF({ orientation: 'landscape', units: 'mm' });
         const [r, g, b] = randomRGB();
+
         doc.setFillColor(r, g, b);
         const offsetX = 10;
         const offsetY = 10;
         const startX = offsetX + 0;
         const startY = offsetY + 0;
-        const length = 200;
+        const length = effort;
         const height = 50;
         doc.rect(startX, startY, length, height, 'F');
         doc.save('epic.pdf');
