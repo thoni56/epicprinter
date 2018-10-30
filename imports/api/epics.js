@@ -11,6 +11,7 @@ Schemas.Epics = new SimpleSchema({
         type: String,
         label: "Key",
         max: 50,
+        optional: false,
         autoform: {
             placeholder:"Identifying key"
         }
@@ -19,6 +20,7 @@ Schemas.Epics = new SimpleSchema({
         type: String,
         label: "Title",
         max: 200,
+        optional: false,
         autoform:{
             placeholder:"Title of the epic"
         }
@@ -26,6 +28,7 @@ Schemas.Epics = new SimpleSchema({
     effort: {
         type: Number,
         label: "Effort",
+        optional: false,
         autoform:{
             placeholder:"Estimated relative effort"
         }
