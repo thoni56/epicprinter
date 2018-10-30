@@ -1,10 +1,18 @@
 import { jsPDF } from 'jspdf';
 
+import { Epics } from '../imports/api/epics';
+
 import './main.css';
 import './main.html';
 
+Template.body.helpers({
+    epics: function() {
+        return Epics;
+    }
+})
+
 Template.body.events({
-    'click #print': function (event) {
+    'clicka #print': function (event) {
         let doc = new jsPDF({ orientation: 'landscape', units: 'mm' });
         const [r, g, b] = randomRGB();
         doc.setFillColor(r, g, b);
