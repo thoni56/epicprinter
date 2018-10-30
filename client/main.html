@@ -7,7 +7,18 @@
   <p>by <img src="https://www.responsive.se/joomla/images/responsive-logo.png" style="width:100px; height: auto;" /></p>
 
   <div style="width:300px">
-    {{> quickForm id="print" collection=epics type="normal" buttonContent="Print"}}
+    {{#autoForm id="epicEntryForm" collection=epics type="normal"}}
+    {{> afQuickFields}}
+    <div>
+      <button type="print" id="print" class="btn btn-primary">Print</button>
+      <button type="save" id="save" class="btn btn-default">Save</button>
+      <button type="reset" id="clear" class="btn btn-default">Clear</button>
+    </div>
+    {{/autoForm}}
+  </div>
+
+  <div style="max-width:400px">
+    {{> epicList }}
   </div>
 
 </body>
