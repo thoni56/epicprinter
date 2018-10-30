@@ -19,7 +19,7 @@
     "jspdf": "^1.4.1",
     "meteor-node-stubs": "^0.4.1",
     "popper.js": "^1.14.4",
-    "simpl-schema": "^1.4.3"
+    "simpl-schema": "^1.5.3"
   },
   "meteor": {
     "mainModule": {
