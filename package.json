@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@types/chai": "^4.1.7",
+    "@types/jspdf": "^1.1.31",
     "@types/meteor": "^1.4.23",
     "@types/mocha": "^5.2.5",
     "chai": "^4.2.0",
@@ -22,7 +23,7 @@
   },
   "meteor": {
     "mainModule": {
-      "client": "client/main.js",
+      "client": "client/main.ts",
       "server": "server/main.js"
     }
   },

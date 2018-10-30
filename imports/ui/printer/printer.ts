@@ -1,54 +1,34 @@
 import { jsPDF } from 'jspdf';
 
-import { Epics } from '../imports/api/epics';
 
-import './main.css';
-import './main.html';
-
-Template.body.helpers({
-    epics: function () {
-        return Epics;
+export function printEpicToPdf(event: any) {
+    const effort: number = event.target.effort.value;
+    const key: string = event.target.key.value;
+    const title: string = event.target.title.value;
+    let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
+    const [r, g, b] = randomRGB();
+    const marginX = 10;
+    const marginY = 10;
+    const unit = 30;
+    const paperWidth = 297;
+    const paperHeight = 210;
+    const maxLength = paperWidth - 2 * marginX;
+    const maxCount = Math.floor((paperHeight - 2 * marginY) / unit);
+    let length = effort;
+    let height = unit;
+    let x = marginX;
+    let y = marginY;
+    doc.setFillColor(r, g, b);
+    while (length > maxLength) {
+        doc.rect(x, y, maxLength, height, 'F');
+        doc.line(x, y + height, x + maxLength, y + height);
+        length -= maxLength;
+        y += unit;
     }
-})
-
-Template.body.events({
-    'submit #print': function (event) {
-        event.preventDefault();
-
-        const effort = event.target.effort.value;
-        const key = event.target.key.value;
-        const title = event.target.title.value;
-
-        let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
-        const [r, g, b] = randomRGB();
-
-        const marginX = 10;
-        const marginY = 10;
-        const unit = 30;
-
-        const paperWidth = 297;
-        const paperHeight = 210;
-
-        const maxLength = paperWidth - 2 * marginX;
-        const maxCount = Math.floor((paperHeight - 2 * marginY) / unit);
-
-        let length = effort;
-        let height = unit;
-        let x = marginX;
-        let y = marginY;
-
-        doc.setFillColor(r, g, b);
-        while (length > maxLength) {
-            doc.rect(x, y, maxLength, height, 'F');
-            doc.line(x, y+height, x+maxLength, y+height);
-            length -= maxLength;
-            y += unit;
-        }
-        doc.rect(x, y, length, height, 'F');
-        doc.text([key, title], marginX+5, marginY+13);
-        doc.save('epic.pdf');
-    }
-});
+    doc.rect(x, y, length, height, 'F');
+    doc.text([key, title], marginX + 5, marginY + 13);
+    doc.save('epic.pdf');
+}
 
 function randomRGB() {
     return hslToRgb(Math.random(),
