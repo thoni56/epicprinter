@@ -7,7 +7,7 @@
   <p>by <img src="https://www.responsive.se/joomla/images/responsive-logo.png" style="width:100px; height: auto;" /></p>
 
   <div style="width:300px">
-    {{#autoForm id="epicEntryForm" collection=epics type="normal" doc=epicToShow}}
+    {{#autoForm id="epicEntryForm" collection=epicsCollection type="normal" doc=epicToShow}}
     {{> afQuickFields}}
     <div>
       <button type="print" id="print" class="btn btn-primary">Print</button>
@@ -16,7 +16,7 @@
     </div>
     {{/autoForm}}
   </div>
-  <p></p>
+  <h2>Previously printed</h2>
   <div style="width:600px;">
     {{> epicList }}
   </div>

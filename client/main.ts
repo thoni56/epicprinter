@@ -10,7 +10,7 @@ import './main.css';
 import './main.html';
 
 Template.body.helpers({
-    epics() {
+    epicsCollection() {
         return Epics;
     },
     epicToShow() {
@@ -43,5 +43,8 @@ Template.body.events({
         let color = AutoForm.getFieldValue("color", "epicEntryForm");
 
         Epics.insert({ key: key, title: title, effort: effort });
+    },
+    'click #clear'() {
+        activeEpic.set(undefined);
     }
 });
