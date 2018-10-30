@@ -1,10 +1,7 @@
 import { jsPDF } from 'jspdf';
 
 
-export function printEpicToPdf(event: any) {
-    const effort: number = event.target.effort.value;
-    const key: string = event.target.key.value;
-    const title: string = event.target.title.value;
+export function printEpicToPdf(key: string, title: string, effort: number) {
     let doc = new jsPDF({ orientation: 'landscape', units: 'mm', format: 'a4' });
     const [r, g, b] = randomRGB();
     const marginX = 10;

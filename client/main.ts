@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Epics } from '../imports/api/epics';
-import { printEpicToPdf } from '../imports/ui/printer/printer';
+import { printEpicToPdf } from './printer';
 
 import './main.css';
 import './main.html';
@@ -15,6 +15,6 @@ Template.body.events({
     'submit #print': function (event) {
         event.preventDefault();
 
-        printEpicToPdf(event);
+        printEpicToPdf(event.target.key.value, event.target.title.value, event.target.effort.value);
     }
 });
