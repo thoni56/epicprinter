@@ -1,7 +1,9 @@
-<template name="epic">
-    <li class="list-group-item">
-        <div style="width:20%">{{key}}</div>
-        <div style="width:70%">{{title}}</div>
-        <div style="width:10%">{{effort}}</div>
+<template name="epicItem">
+    <li class="list-group-item {{active}}">
+        <div class="row">
+            <div class="col-sm-3">{{key}}</div>
+            <div class="col-sm-7">{{title}}</div>
+            <div class="col-sm-2">{{effort}}</div>
+        </div>
     </li>
 </template>
