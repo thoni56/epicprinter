@@ -15,6 +15,7 @@ Template.body.events({
     'submit #print': function (event) {
         event.preventDefault();
 
-        printEpicToPdf(event.target.key.value, event.target.title.value, event.target.effort.value);
+        const target = event.target;
+        printEpicToPdf(target.key.value, target.title.value, target.effort.value);
     }
 });
