@@ -1,0 +1,32 @@
+{
+  "name": "epicplanner",
+  "private": true,
+  "scripts": {
+    "start": "meteor run --inspect",
+    "test": "meteor test --inspect --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --inspect --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "@types/chai": "^4.1.7",
+    "@types/meteor": "^1.4.23",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "meteor-node-stubs": "^0.4.1",
+    "popper.js": "^1.14.4",
+    "simpl-schema": "^1.4.3"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-plugin-meteor": "^5.1.0"
+  }
+}

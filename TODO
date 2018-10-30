@@ -1,0 +1,19 @@
+This is a precursor to the experimental platform the planing tool
+
+    Responsive Epic Planner
+
+See that project. This project lets you printout manually entered
+epics in correct size so that you can cut and paste it on your physical
+epic/capacity planning board.
+
+It will choose a color for your epic randomly and print it in a single "stripe"
+so to increase "height" you have to cut the epic (paper representation) in parts
+and paste them along side each other. This also allows for more dynamic
+variation in "height".
+
+☐ Dialog for entering epic printing data (key, title, effort)
+☐ Create a PDF to print
+☐ User accounts
+☐ Save epics and make a list
+☐ Re-print stored epic
+☐ Delete stored epic
