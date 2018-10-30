@@ -13,8 +13,10 @@ variation in "height".
 
 ✔ Dialog for entering epic printing data (key, title, effort) @done(18-10-30 16:14)
 ✔ Create a PDF to print @done(18-10-30 16:15)
-☐ Handle epics which require multiple pages
+✔ Save epics and make a list @done(18-10-30 23:45)
+✔ Re-print stored epic @done(18-10-31 00:17)
 ☐ User accounts
-☐ Save epics and make a list
-☐ Re-print stored epic
+☐ Allow storing only when logged in
+☐ Remove insecure and autopublish
 ☐ Delete stored epic
+☐ Handle epics which require multiple pages
