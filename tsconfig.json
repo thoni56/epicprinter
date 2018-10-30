@@ -11,12 +11,17 @@
     "jsx": "react",
     "allowJs": false,
     "noImplicitAny": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*"]
+    }
   },
   "include": [
     "client/**/*",
     "server/**/*",
-    "imports/**/*"
+    "imports/**/*",
+    "typings/**/*"
   ],
   "exclude": [
     "node_modules",
