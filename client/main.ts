@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
 import { Epics, createEpic, updateEpic, findEpic } from '../imports/api/epics';
 import { printEpicToPdf } from './printer';
 import { AutoForm } from 'meteor/aldeed:autoform';
@@ -22,12 +23,21 @@ Template.body.events({
     'click #print': function (event) {
         event.preventDefault();
 
-        if (!AutoForm.validateField("epicEntryForm"))
+        if (!AutoForm.validateForm("epicEntryForm")) {
+            console.log('Form validation failed');
             return;
+        }
 
         let key = AutoForm.getFieldValue("key", "epicEntryForm");
         let title = AutoForm.getFieldValue("title", "epicEntryForm");
         let effort = AutoForm.getFieldValue("effort", "epicEntryForm");
+
+        let color;
+        if (activeEpic.get()) {
+            let epic = findEpic(activeEpic.get());
+            color = epic.color;
+        } else
+            color = randomColor();
 
         if (Meteor.userId()) {
             // Only store if user logged in
@@ -45,4 +55,11 @@ Template.body.events({
         AutoForm.resetForm("epicEntryForm");
     }
 });
+
+function randomColor(): any {
+    return 'hsla(' +
+        (360 * Math.random()) + ', ' +
+        (25 + 70 * Math.random()) + '% ,' +
+        (85 + 10 * Math.random()) + '%)';
+}
 
