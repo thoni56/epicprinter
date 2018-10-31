@@ -38,7 +38,6 @@ Template.body.events({
             color = epic.color;
         } else
             color = randomColor();
-        console.log(color);
 
         if (Meteor.userId()) {
             // Only store if user logged in
