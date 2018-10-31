@@ -16,11 +16,14 @@ variation in "height".
 ✔ Save epics and make a list @done(18-10-30 23:45)
 ✔ Re-print stored epic @done(18-10-31 00:17)
 ✔ Re-save recalled and edited epic @done(18-10-31 11:05)
+✔ Auto-save on print @done(18-10-31 15:53)
 ✔ User accounts @done(18-10-31 00:38)
-☐ Store and fetch as the logged in user
-☐ Randomize color when printing (if new, else use stored color)
-☐ Allow storing only when logged in
-☐ Auto-save instead of explicit (timestamp updated on re-print)
+✔ Store logged in user @done(18-10-31 15:43)
+✔ Allow storing only when logged in @done(18-10-31 15:52)
+✔ Randomize color when printing (if new, else use stored color) @done(18-10-31 15:43)
+✔ When printing a new epic which is stored, set activeEpic to it to avoid creating many in the history @done(18-10-31 15:51)
+☐ Fetch only epics stored as the logged in user
+☐ Sort history on timestamps (updated on re-print)
 ☐ Remove insecure and autopublish
 ☐ Delete stored epic
 ☐ Handle epics which require multiple pages

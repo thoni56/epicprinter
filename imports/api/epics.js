@@ -11,8 +11,14 @@ export function allEpics() {
 export function findEpic(id) {
     return Epics.findOne(id);
 }
-export function createEpic(key, title, effort, color) {
-    Epics.insert({ key: key, title: title, effort: effort, color: color, owner: Meteor.userId() });
+export function createEpic(key, title, effort, color, callback) {
+    Epics.insert({ key: key, title: title, effort: effort, color: color, owner: Meteor.userId() }, function (err, id) {
+        if (err)
+            console.warn(err.message);
+        else if (callback) {
+            callback(id);
+        }
+    });
 }
 
 export function updateEpic(id, key, title, effort) {

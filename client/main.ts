@@ -38,11 +38,14 @@ Template.body.events({
             color = epic.color;
         } else
             color = randomColor();
+        console.log(color);
 
         if (Meteor.userId()) {
             // Only store if user logged in
             if (activeEpic.get() == undefined)
-                createEpic(key, title, effort, color);
+                createEpic(key, title, effort, color, function (id) {
+                    activeEpic.set(id);
+                });
             else
                 updateEpic(activeEpic.get(), key, title, effort);
         }
@@ -60,9 +63,9 @@ function randomColor(): string {
     return rgbToHtml(randomRGB());
 }
 
-function rgbToHtml(rgb: number[]) : string {
+function rgbToHtml(rgb: number[]): string {
     let [r, g, b] = rgb
-    return "#"+r.toString(16)+g.toString(16)+b.toString(16);
+    return "#" + r.toString(16) + g.toString(16) + b.toString(16);
 }
 
 function randomRGB() {
@@ -84,7 +87,7 @@ function randomRGB() {
  * 
  * Copied from https://stackoverflow.com/a/9493060/204658
  */
-function hslToRgb(h, s, l) : number[] {
+function hslToRgb(h, s, l): number[] {
     var r, g, b;
 
     if (s == 0) {
