@@ -48,14 +48,14 @@ Template.body.events({
         if (Meteor.userId()) {
             // Only store if user logged in
             if (activeEpic.get() == undefined)
-                createEpic(key, title, effort, color, function (id) {
-                    activeEpic.set(id);
-                });
+                createEpic(key, title, effort, color);
             else
                 updateEpic(activeEpic.get(), key, title, effort);
         }
 
         printEpicToPdf(key, title, effort, color);
+
+        AutoForm.resetForm("epicEntryForm");
     },
     'click #clear'(event) {
         event.preventDefault();

@@ -25,7 +25,7 @@ variation in "height".
 ✔ Use stored stored/randomized color when printing @started(18-10-31 16:01) @done(18-10-31 16:31) @lasted(30m30s)
 ✔ Fetch only epics stored as the logged in user @started(18-10-31 16:39) @done(18-10-31 17:43) @lasted(1h5m)
 ✔ Sort history on timestamps (updated on re-print) @done(18-10-31 18:04)
-☐ Don't store new epic in activeEpic but clear form, so that you know that you need to edit the previous one or fill in a new
+✔ Don't store new epic in activeEpic but clear form, so that you know that you need to edit the previous one or fill in a new @done(18-10-31 18:14)
 ☐ Remove insecure and autopublish
 ☐ Delete stored epic
 ☐ Handle epics which require multiple pages
