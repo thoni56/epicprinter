@@ -5,11 +5,11 @@ import { Schemas } from './schemas';
 export const Epics = new Mongo.Collection('Epics');
 
 export function allEpics() {
-    return Epics.find();
+    return Epics.find({ owner: Meteor.userId()});
 }
 
 export function findEpic(id) {
-    return Epics.findOne(id);
+    return Epics.findOne({ _id: id, owner: Meteor.userId()});
 }
 export function createEpic(key, title, effort, color, callback) {
     Epics.insert({ key: key, title: title, effort: effort, color: color, owner: Meteor.userId() }, function (err, id) {
