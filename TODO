@@ -15,10 +15,11 @@ variation in "height".
 ✔ Create a PDF to print @done(18-10-30 16:15)
 ✔ Save epics and make a list @done(18-10-30 23:45)
 ✔ Re-print stored epic @done(18-10-31 00:17)
-☐ Re-save recalled and edited epic
+✔ Re-save recalled and edited epic @done(18-10-31 11:05)
 ✔ User accounts @done(18-10-31 00:38)
 ☐ Store and fetch as the logged in user
 ☐ Allow storing only when logged in
+☐ Auto-save instead of explicit (timestamp updated on re-print)
 ☐ Remove insecure and autopublish
 ☐ Delete stored epic
 ☐ Handle epics which require multiple pages
