@@ -11,12 +11,12 @@ export function allEpics() {
 export function findEpic(id) {
     return Epics.findOne(id);
 }
-export function createEpic(key, title, effort) {
-    Epics.insert({ key: key, title: title, effort: effort, owner: Meteor.userId() });
+export function createEpic(key, title, effort, color) {
+    Epics.insert({ key: key, title: title, effort: effort, color: color, owner: Meteor.userId() });
 }
 
 export function updateEpic(id, key, title, effort) {
-    Epics.update({ _id: id }, { $set: { key: key, title: title, effort: effort, owner: Meteor.userId() }});
+    Epics.update({ _id: id }, { $set: { key: key, title: title, effort: effort, owner: Meteor.userId() } });
 }
 
 SimpleSchema.extendOptions(['autoform']);
@@ -50,13 +50,8 @@ Schemas.Epics = new SimpleSchema({
     },
     color: {
         type: String,
+        optional: true,
         label: false,
-        autoValue: function () {
-            return 'hsla(' +
-                (360 * Math.random()) + ', ' +
-                (25 + 70 * Math.random()) + '% ,' +
-                (85 + 10 * Math.random()) + '%)';
-        },
         autoform: {
             omit: true
         }
@@ -64,7 +59,7 @@ Schemas.Epics = new SimpleSchema({
     owner: {
         type: String,
         optional: true,
-        autoform:{
+        autoform: {
             omit: true
         }
     }

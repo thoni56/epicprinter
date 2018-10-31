@@ -42,7 +42,7 @@ Template.body.events({
         if (Meteor.userId()) {
             // Only store if user logged in
             if (activeEpic.get() == undefined)
-                createEpic(key, title, effort);
+                createEpic(key, title, effort, color);
             else
                 updateEpic(activeEpic.get(), key, title, effort);
         }
