@@ -29,25 +29,15 @@ Template.body.events({
         let title = AutoForm.getFieldValue("title", "epicEntryForm");
         let effort = AutoForm.getFieldValue("effort", "epicEntryForm");
 
-        printEpicToPdf(key, title, effort);
-    },
-    'click #save': function (event) {
-        event.preventDefault();
-
-        if (!AutoForm.validateField("epicEntryForm"))
-            return;
-
-        let key = AutoForm.getFieldValue("key", "epicEntryForm");
-        let title = AutoForm.getFieldValue("title", "epicEntryForm");
-        let effort = AutoForm.getFieldValue("effort", "epicEntryForm");
-        let color = AutoForm.getFieldValue("color", "epicEntryForm");
-
         if (activeEpic.get() == undefined)
             createEpic(key, title, effort);
         else
             updateEpic(activeEpic.get(), key, title, effort);
+
+        printEpicToPdf(key, title, effort);
     },
     'click #clear'() {
+        AutoForm.resetForm("epicEntryForm");
         activeEpic.set(undefined);
     }
 });
