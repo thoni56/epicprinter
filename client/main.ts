@@ -29,16 +29,20 @@ Template.body.events({
         let title = AutoForm.getFieldValue("title", "epicEntryForm");
         let effort = AutoForm.getFieldValue("effort", "epicEntryForm");
 
-        if (activeEpic.get() == undefined)
-            createEpic(key, title, effort);
-        else
-            updateEpic(activeEpic.get(), key, title, effort);
+        if (Meteor.userId()) {
+            // Only store if user logged in
+            if (activeEpic.get() == undefined)
+                createEpic(key, title, effort);
+            else
+                updateEpic(activeEpic.get(), key, title, effort);
+        }
 
         printEpicToPdf(key, title, effort);
     },
-    'click #clear'() {
-        AutoForm.resetForm("epicEntryForm");
+    'click #clear'(event) {
+        event.preventDefault();
         activeEpic.set(undefined);
+        AutoForm.resetForm("epicEntryForm");
     }
 });
 

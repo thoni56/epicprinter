@@ -17,9 +17,12 @@
     </div>
     {{/autoForm}}
   </div>
+
+  {{#if currentUser}}
   <h2>History</h2>
   <div style="width:600px;">
     {{> epicList }}
   </div>
+  {{/if}}
 
 </body>
