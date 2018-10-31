@@ -35,7 +35,13 @@ Template.body.events({
         let color;
         if (activeEpic.get()) {
             let epic = findEpic(activeEpic.get());
-            color = epic.color;
+            if (epic) {
+                color = epic.color;
+            }
+            else {
+                activeEpic.set(undefined);
+                color = randomColor();
+            }
         } else
             color = randomColor();
 
