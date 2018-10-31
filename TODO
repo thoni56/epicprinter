@@ -22,6 +22,7 @@ variation in "height".
 ✔ Allow storing only when logged in @done(18-10-31 15:52)
 ✔ Randomize color when printing (if new, else use stored color) @done(18-10-31 15:43)
 ✔ When printing a new epic which is stored, set activeEpic to it to avoid creating many in the history @done(18-10-31 15:51)
+✔ Use stored stored/randomized color when printing @started(18-10-31 16:01) @done(18-10-31 16:31) @lasted(30m30s)
 ☐ Fetch only epics stored as the logged in user
 ☐ Sort history on timestamps (updated on re-print)
 ☐ Remove insecure and autopublish

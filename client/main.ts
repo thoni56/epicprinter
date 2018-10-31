@@ -50,7 +50,7 @@ Template.body.events({
                 updateEpic(activeEpic.get(), key, title, effort);
         }
 
-        printEpicToPdf(key, title, effort);
+        printEpicToPdf(key, title, effort, color);
     },
     'click #clear'(event) {
         event.preventDefault();
@@ -60,6 +60,8 @@ Template.body.events({
 });
 
 function randomColor(): string {
+    // Use HSL since it is easier to generate "light" colors
+    // Then convert to HTML RGB string
     return rgbToHtml(randomRGB());
 }
 
