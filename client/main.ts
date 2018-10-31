@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Epics, createEpic, updateEpic } from '../imports/api/epics';
+import { Epics, createEpic, updateEpic, findEpic } from '../imports/api/epics';
 import { printEpicToPdf } from './printer';
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { activeEpic } from 'imports/ui/epicList/epicItem';
@@ -14,7 +14,7 @@ Template.body.helpers({
         return Epics;
     },
     epicToShow() {
-        return Epics.findOne(activeEpic.get());
+        return findEpic(activeEpic.get());
     }
 })
 

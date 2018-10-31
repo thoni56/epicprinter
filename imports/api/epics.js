@@ -4,7 +4,13 @@ import { Schemas } from './schemas';
 
 export const Epics = new Mongo.Collection('Epics');
 
+export function allEpics() {
+    return Epics.find();
+}
 
+export function findEpic(id) {
+    return Epics.findOne(id);
+}
 export function createEpic(key, title, effort) {
     Epics.insert({ key: key, title: title, effort: effort, owner: Meteor.userId() });
 }
