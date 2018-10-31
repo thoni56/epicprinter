@@ -4,6 +4,15 @@ import { Schemas } from './schemas';
 
 export const Epics = new Mongo.Collection('Epics');
 
+
+export function createEpic(key, title, effort) {
+    Epics.insert({ key: key, title: title, effort: effort, owner: Meteor.userId() });
+}
+
+export function updateEpic(id, key, title, effort) {
+    Epics.update({ _id: id }, { $set: { key: key, title: title, effort: effort, owner: Meteor.userId() }});
+}
+
 SimpleSchema.extendOptions(['autoform']);
 
 Schemas.Epics = new SimpleSchema({
@@ -13,7 +22,7 @@ Schemas.Epics = new SimpleSchema({
         max: 50,
         optional: false,
         autoform: {
-            placeholder:"Identifying key"
+            placeholder: "Identifying key"
         }
     },
     title: {
@@ -21,16 +30,16 @@ Schemas.Epics = new SimpleSchema({
         label: "Title",
         max: 200,
         optional: false,
-        autoform:{
-            placeholder:"Title of the epic"
+        autoform: {
+            placeholder: "Title of the epic"
         }
     },
     effort: {
         type: Number,
         label: "Effort",
         optional: false,
-        autoform:{
-            placeholder:"Estimated relative effort"
+        autoform: {
+            placeholder: "Estimated relative effort"
         }
     },
     color: {
@@ -43,9 +52,14 @@ Schemas.Epics = new SimpleSchema({
                 (85 + 10 * Math.random()) + '%)';
         },
         autoform: {
-            afFieldInput: {
-                type: "hidden"
-            }
+            omit: true
+        }
+    },
+    owner: {
+        type: String,
+        optional: true,
+        autoform:{
+            omit: true
         }
     }
 });

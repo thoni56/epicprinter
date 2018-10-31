@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Epics } from '../imports/api/epics';
+import { Epics, createEpic, updateEpic } from '../imports/api/epics';
 import { printEpicToPdf } from './printer';
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { activeEpic } from 'imports/ui/epicList/epicItem';
@@ -42,9 +42,13 @@ Template.body.events({
         let effort = AutoForm.getFieldValue("effort", "epicEntryForm");
         let color = AutoForm.getFieldValue("color", "epicEntryForm");
 
-        Epics.insert({ key: key, title: title, effort: effort });
+        if (activeEpic.get() == undefined)
+            createEpic(key, title, effort);
+        else
+            updateEpic(activeEpic.get(), key, title, effort);
     },
     'click #clear'() {
         activeEpic.set(undefined);
     }
 });
+
