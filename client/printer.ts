@@ -17,18 +17,22 @@ export function printEpicToPdf(key: string, title: string, effort: number, color
     let x = marginX;
     let y = marginY;
 
+    // Scale to max width of 300 effort points
+    const maxEffortWidth = 300;
+    const scale = (paperWidth-marginX-marginY)/maxEffortWidth;
+
     // Color is a HTML RGB string, e.g. #45e922
     const rgb = hexToRgb(color);
     doc.setFillColor(rgb["r"], rgb["g"], rgb["b"]);
     
-    while (length > maxLength) {
-        doc.rect(x, y, maxLength, height, 'F');
-        doc.line(x, y + height, x + maxLength, y + height);
-        length -= maxLength;
+    while (length > maxEffortWidth) {
+        doc.rect(x, y, maxEffortWidth*scale, height, 'F');
+        doc.line(x, y + height, x + maxEffortWidth*scale, y + height);
+        length -= maxEffortWidth;
         y += unit;
     }
-    doc.rect(x, y, length, height, 'F');
-    doc.text([key, title], marginX + 5, marginY + 13);
+    doc.rect(x, y, length*scale, height, 'F');
+    doc.text([key, title, "Effort: "+effort.toString()], marginX + 5, marginY + 10);
 
     doc.save('epic.pdf');
 }
