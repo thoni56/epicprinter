@@ -34,7 +34,7 @@ export function printEpicToPdf(key: string, title: string, effort: number, color
     doc.rect(x, y, length*scale, height, 'F');
     doc.text([key, title, "Effort: "+effort.toString()], marginX + 5, marginY + 10);
 
-    doc.save('epic.pdf');
+    doc.save(key+'.pdf');
 }
 
 function hexToRgb(hexString:string) {
